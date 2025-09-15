@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const API_BASE_URL = "/api/recipes";
-
 class RecipeService {
     async searchRecipes(query, number = 10) {
     try {
@@ -10,7 +8,7 @@ class RecipeService {
         throw new Error("API key not found. Please set VITE_SPOONACULAR_API_KEY in your environment variables.");
       }
       
-      const response = await axios.get(`${API_BASE_URL}/complexSearch`, {
+      const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch`, {
         params: {
           apiKey: apiKey,
           query: query,
@@ -26,7 +24,7 @@ class RecipeService {
   }
   async fetchRecipeDetails(recipeId) {
     try {
-      const response = await axios.get(`${API_BASE_URL}/${recipeId}/information`, {
+      const response = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information`, {
         params: {
           apiKey: import.meta.env.VITE_SPOONACULAR_API_KEY,
           includeNutrition: true,
