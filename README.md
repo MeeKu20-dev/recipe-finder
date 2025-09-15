@@ -1,58 +1,12 @@
-# 🍳 Recipe Finder App
+# React + Vite
 
-## ⚙️ Setup
-1. Create a `.env` file in the project root.  
-2. Copy values from `.env.example` and add your Spoonacular API key.  
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## ✨ Features
-- User can search for recipes by cuisine.  
-- Results are displayed as a list with recipe titles and images.  
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
----
+## Expanding the ESLint configuration
 
-## ✅ Steps / Todo
-1. **Create a Search Form**  
-   - Add an input field with placeholder **"Enter cuisine"**.  
-   - Add a **Submit** button.  
-
-2. **Handle Form Submission**  
-   - On submit, read the input value.  
-   - Trigger a request to Spoonacular API.  
-
-3. **Make API Request**  
-   - Endpoint: `https://api.spoonacular.com/recipes/complexSearch`  
-   - Use [axios](https://axios-http.com/docs/intro) to make the request.  
-   - Pass query params:  
-     - `apiKey` → from `.env`  
-     - `cuisine` → user input  
-
-4. **Display Results**  
-   - On success, show a list of recipes.  
-   - Each recipe should include:  
-     - Title  
-     - Image  
-
----
-
-## 📝 Example API Call
-```js
-import axios from "axios";
-
-const API_URL = "https://api.spoonacular.com/recipes/complexSearch";
-
-export const fetchRecipes = async (cuisine) => {
-  try {
-    const response = await axios.get(API_URL, {
-      params: {
-        apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY,
-        cuisine: cuisine,
-      },
-    });
-    return response.data.results;
-  } catch (error) {
-    console.error("Error fetching recipes:", error);
-    return [];
-  }
-};
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
